@@ -22,7 +22,7 @@ n_end = nx(end) + 2; % Las time where y[n] is non-zero
 ny = (nx(1):1:n_end)'; % y[n] will be non-zero between nx(1) and n_end
 %
 % We define the output signal vector (initialized to 0)
-y = zeros(1, length(ny));
+y = zeros(1, length(ny))';
 %
 % The output is obtained by adding 4 signals
 % x[n]^2 Term

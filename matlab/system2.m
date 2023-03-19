@@ -1,5 +1,4 @@
 function [ny, y] = system2(nx, x)
-%
 % y[n] = 0.5x[4 − n] + 0.7x[n − 5] − 0.4 cos(2πx[2 − n])
 %
 % Inputs:
@@ -12,6 +11,8 @@ function [ny, y] = system2(nx, x)
 % y: values of the output signal
 
 % Creating the temporal axis
+% I don't really need all the values in between the upper and lower bounds of our support,
+% so I'm only going to calculate the bounds of the support of each term
 % x[n] is defined between nx(1) and nx(end) <=> nx(1) <= x <= nx(end)
 % x[4-n] defined <=> nx(1) <= 4-n <= nx(end) <=> 4-nx(end) <= n <= 4-nx(1)
 nyi = [4-nx(end) 4-nx(1)];
@@ -20,11 +21,8 @@ nyi = [nyi; nx(1)+5 nx(end)+5];
 % x[2-n] defined <=> nx(1) <= 4-n <= nx(end) <=> 2-nx(end) <= n <= 2-nx(1)
 nyi = [nyi; 2-nx(end) 2-nx(1)];
 
-% I don't really care about all the values in between the upper and lower bounds of our support
-
-
 % Creating an empty signal
-ny = (min(nyi(:,1)):max(nyi(:,2)))'; % y[n] may be non-zero between the min lower bound and the max upper bound
+ny = (min(nyi(:,1)):max(nyi(:,2)))'; % y[n] may be non-zero in this range
 y = zeros(1, length(ny))';
 
 
