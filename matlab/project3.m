@@ -1,4 +1,4 @@
-% Tests for project 3
+% Project 3
 x = audioread("..\audio\discursofinal.wav");
 nx = (1:length(x))'; % Using transposition to make it vertical
 
